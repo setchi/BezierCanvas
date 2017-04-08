@@ -1,5 +1,6 @@
 # BezierCanvas [![License](https://img.shields.io/github/license/setchi/BezierCanvas.svg?style=flat-square)](LICENSE)
 
+Illustrator のペンツール風にベジェ曲線を描けるサンプルスクリプトです。[English](https://translate.google.com/translate?sl=ja&tl=en&u=https://github.com/setchi/BezierCanvas) (by Google Translate)
 ![screenshot](screenshot.png)
 
 ## 開発環境
