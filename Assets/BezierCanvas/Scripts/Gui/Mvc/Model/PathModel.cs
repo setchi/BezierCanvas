@@ -70,14 +70,14 @@ public class PathModel : MonoBehaviour {
         point.Handle1 = point.Anchore + direction * length;
     }
 
-    public void MoveHandle1Symmtry(Guid id, Vector2 handle) {
+    public void MoveHandle1Symmetry(Guid id, Vector2 handle) {
         Dirty = true;
         var point = GetControlPoint (id);
         point.Handle1 = handle;
         point.Handle2 = Vector3.LerpUnclamped (handle, point.Anchore, 2f);
     }
 
-    public void MoveHandle2Symmtry(Guid id, Vector2 handle) {
+    public void MoveHandle2Symmetry(Guid id, Vector2 handle) {
         Dirty = true;
         var point = GetControlPoint (id);
         point.Handle2 = handle;

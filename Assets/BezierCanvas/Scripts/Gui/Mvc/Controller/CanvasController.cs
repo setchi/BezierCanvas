@@ -126,12 +126,12 @@ public class CanvasController : MonoBehaviour {
     }
 
     void MoveHandle1Symmetry(Guid id, Vector2 handle) {
-        model.MoveHandle1Symmtry (id, handle);
+        model.MoveHandle1Symmetry (id, handle);
         UpdateControlPoint (id);
     }
 
     void MoveHandle2Symmetry(Guid id, Vector2 handle) {
-        model.MoveHandle2Symmtry (id, handle);
+        model.MoveHandle2Symmetry (id, handle);
         UpdateControlPoint (id);
     }
 
