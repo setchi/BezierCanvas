@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 
-public struct Path {
-    public List<ControlPoint> Points;
+namespace BezierCanvas {
+
+    public struct Path {
+        public List<ControlPoint> Points;
+    }
 }

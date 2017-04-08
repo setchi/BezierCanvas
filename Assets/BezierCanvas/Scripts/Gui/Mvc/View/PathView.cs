@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
-public class PathView : MonoBehaviour {
-    LineRenderer lineRenderer;
+namespace BezierCanvas {
 
-    void Awake() {
-        lineRenderer = GetComponent<LineRenderer> ();
-    }
+    [RequireComponent(typeof(LineRenderer))]
+    public class PathView : MonoBehaviour {
+        LineRenderer lineRenderer;
 
-    public void UpdatePath(List<Vector3> points) {
-        lineRenderer.positionCount = points.Count;
-        lineRenderer.SetPositions (points.ToArray ());
+        void Awake() {
+            lineRenderer = GetComponent<LineRenderer> ();
+        }
+
+        public void UpdatePath(List<Vector3> points) {
+            lineRenderer.positionCount = points.Count;
+            lineRenderer.SetPositions (points.ToArray ());
+        }
     }
 }

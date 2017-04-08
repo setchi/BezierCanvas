@@ -5,54 +5,57 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-[RequireComponent(typeof(LineRenderer))]
-public class ControlPointView : MonoBehaviour {
-    [SerializeField]
-    HandleView handle1;
-    [SerializeField]
-    HandleView handle2;
-    [SerializeField]
-    AnchoreView anchore;
+namespace BezierCanvas {
 
-    [HideInInspector]
-    public Guid Id;
+    [RequireComponent(typeof(LineRenderer))]
+    public class ControlPointView : MonoBehaviour {
+        [SerializeField]
+        HandleView handle1;
+        [SerializeField]
+        HandleView handle2;
+        [SerializeField]
+        AnchoreView anchore;
 
-    LineRenderer lineRenderer;
+        [HideInInspector]
+        public Guid Id;
 
-    void Awake() {
-        lineRenderer = GetComponent<LineRenderer> ();
-        lineRenderer.positionCount = 3;
-    }
+        LineRenderer lineRenderer;
 
-    public void SetSelected(bool selected) {
-        anchore.SetColor (selected ? Color.blue : Color.white);
-    }
+        void Awake() {
+            lineRenderer = GetComponent<LineRenderer> ();
+            lineRenderer.positionCount = 3;
+        }
 
-    public void UpdateControlPoint(ControlPoint point) {
-        anchore.SetPosition (point.Anchore);
-        handle1.SetPosition (point.Handle1);
-        handle2.SetPosition (point.Handle2);
+        public void SetSelected(bool selected) {
+            anchore.SetColor (selected ? Color.blue : Color.white);
+        }
 
-        lineRenderer.SetPosition (0, point.Handle1);
-        lineRenderer.SetPosition (1, point.Anchore);
-        lineRenderer.SetPosition (2, point.Handle2);
-    }
+        public void UpdateControlPoint(ControlPoint point) {
+            anchore.SetPosition (point.Anchore);
+            handle1.SetPosition (point.Handle1);
+            handle2.SetPosition (point.Handle2);
 
-    public void OnPointerDown(Action<Guid> callback) {
-        anchore.OnPointerDown (() => callback (Id));
-        handle1.OnPointerDown (() => callback (Id));
-        handle2.OnPointerDown (() => callback (Id));
-    }
+            lineRenderer.SetPosition (0, point.Handle1);
+            lineRenderer.SetPosition (1, point.Anchore);
+            lineRenderer.SetPosition (2, point.Handle2);
+        }
 
-    public void OnDragAnchore(Action<Guid, Vector2> callback) {
-        anchore.OnDrag (position => callback(Id, position));
-    }
+        public void OnPointerDown(Action<Guid> callback) {
+            anchore.OnPointerDown (() => callback (Id));
+            handle1.OnPointerDown (() => callback (Id));
+            handle2.OnPointerDown (() => callback (Id));
+        }
 
-    public void OnDragHandle1(Action<Guid, Vector2> callback) {
-        handle1.OnDrag (position => callback (Id, position));
-    }
+        public void OnDragAnchore(Action<Guid, Vector2> callback) {
+            anchore.OnDrag (position => callback(Id, position));
+        }
 
-    public void OnDragHandle2(Action<Guid, Vector2> callback) {
-        handle2.OnDrag (position => callback (Id, position));
+        public void OnDragHandle1(Action<Guid, Vector2> callback) {
+            handle1.OnDrag (position => callback (Id, position));
+        }
+
+        public void OnDragHandle2(Action<Guid, Vector2> callback) {
+            handle2.OnDrag (position => callback (Id, position));
+        }
     }
 }

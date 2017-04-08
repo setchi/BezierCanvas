@@ -6,68 +6,71 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System;
 
-[RequireComponent(typeof(RectTransform))]
-public class CanvasView : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler {
+namespace BezierCanvas {
 
-    [SerializeField]
-    Button buttonCorner;
-    [SerializeField]
-    Button buttonSmooth;
-    [SerializeField]
-    Button buttonDelete;
-    [SerializeField]
-    Button buttonClear;
+    [RequireComponent(typeof(RectTransform))]
+    public class CanvasView : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler {
 
-    Action<Vector2> onPointerDown;
-    Action<Vector2> onDrag;
-    Action<Vector2> onEndDrag;
+        [SerializeField]
+        Button buttonCorner;
+        [SerializeField]
+        Button buttonSmooth;
+        [SerializeField]
+        Button buttonDelete;
+        [SerializeField]
+        Button buttonClear;
 
-    public void OnClickButtonSmooth(UnityAction callback) {
-        buttonSmooth.onClick.AddListener (callback);
-    }
+        Action<Vector2> onPointerDown;
+        Action<Vector2> onDrag;
+        Action<Vector2> onEndDrag;
 
-    public void OnClickButtonCorner(UnityAction callback) {
-        buttonCorner.onClick.AddListener (callback);
-    }
-
-    public void OnClickButtonClear(UnityAction callback) {
-        buttonClear.onClick.AddListener (callback);
-    }
-
-    public void OnClickButtonDelete(UnityAction callback) {
-        buttonDelete.onClick.AddListener (callback);
-    }
-
-    public void OnPointerDown(Action<Vector2> callback) {
-        onPointerDown = callback;
-    }
-
-    public void OnDrag(Action<Vector2> callback) {
-        onDrag = callback;
-    }
-
-    public void OnEndDrag(Action<Vector2> callback) {
-        onEndDrag = callback;
-    }
-
-    void IPointerDownHandler.OnPointerDown(PointerEventData e) {
-        if (onPointerDown == null) {
-            return;
+        public void OnClickButtonSmooth(UnityAction callback) {
+            buttonSmooth.onClick.AddListener (callback);
         }
-        onPointerDown (e.position);
-    }
 
-    void IDragHandler.OnDrag(PointerEventData e) {
-        if (onDrag == null) {
-            return;
+        public void OnClickButtonCorner(UnityAction callback) {
+            buttonCorner.onClick.AddListener (callback);
         }
-        onDrag (e.position);
-    }
 
-    void IEndDragHandler.OnEndDrag(PointerEventData e) {
-        if (onEndDrag == null) {
-            return;
+        public void OnClickButtonClear(UnityAction callback) {
+            buttonClear.onClick.AddListener (callback);
         }
-        onEndDrag (e.position);
+
+        public void OnClickButtonDelete(UnityAction callback) {
+            buttonDelete.onClick.AddListener (callback);
+        }
+
+        public void OnPointerDown(Action<Vector2> callback) {
+            onPointerDown = callback;
+        }
+
+        public void OnDrag(Action<Vector2> callback) {
+            onDrag = callback;
+        }
+
+        public void OnEndDrag(Action<Vector2> callback) {
+            onEndDrag = callback;
+        }
+
+        void IPointerDownHandler.OnPointerDown(PointerEventData e) {
+            if (onPointerDown == null) {
+                return;
+            }
+            onPointerDown (e.position);
+        }
+
+        void IDragHandler.OnDrag(PointerEventData e) {
+            if (onDrag == null) {
+                return;
+            }
+            onDrag (e.position);
+        }
+
+        void IEndDragHandler.OnEndDrag(PointerEventData e) {
+            if (onEndDrag == null) {
+                return;
+            }
+            onEndDrag (e.position);
+        }
     }
 }
