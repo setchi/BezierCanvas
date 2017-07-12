@@ -5,7 +5,7 @@ Unity 上で Illustrator のペンツール風にベジェ曲線を描けるサ�
 ![screenshot](Documents/screencast.gif)
 
 ## 開発環境
-Unity 5.6.0f3
+Unity 2017.1.0f3
 
 ## LICENSE
 MIT
