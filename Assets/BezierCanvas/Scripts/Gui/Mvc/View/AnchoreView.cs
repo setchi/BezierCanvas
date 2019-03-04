@@ -3,51 +3,52 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-namespace BezierCanvas {
-
+namespace BezierCanvas
+{
     [RequireComponent(typeof(RectTransform))]
-    public class AnchoreView : MonoBehaviour, IPointerDownHandler, IDragHandler {
-        [SerializeField]
-        Image image;
+    public class AnchoreView : MonoBehaviour, IPointerDownHandler, IDragHandler
+    {
+        [SerializeField] Image image;
 
         RectTransform rectTransform;
         Action<Vector2> onDrag;
         Action onPointerDown;
 
-        void Awake() {
-            rectTransform = GetComponent<RectTransform> ();
+        void Awake()
+        {
+            rectTransform = GetComponent<RectTransform>();
         }
 
-        public void SetColor(Color color) {
+        public void SetColor(Color color)
+        {
             image.color = color;
         }
 
-        public void SetPosition(Vector3 position) {
+        public void SetPosition(Vector3 position)
+        {
             rectTransform.anchoredPosition3D = position;
         }
 
-        public void OnPointerDown(Action callback) {
+        public void OnPointerDown(Action callback)
+        {
             onPointerDown = callback;
         }
 
-        public void OnDrag(Action<Vector2> callback) {
+        public void OnDrag(Action<Vector2> callback)
+        {
             onDrag = callback;
         }
 
-        void IPointerDownHandler.OnPointerDown(PointerEventData e) {
-            e.Use ();
-            if (onPointerDown == null) {
-                return;
-            }
-            onPointerDown ();
+        void IPointerDownHandler.OnPointerDown(PointerEventData e)
+        {
+            e.Use();
+            onPointerDown?.Invoke();
         }
 
-        void IDragHandler.OnDrag(PointerEventData e) {
-            e.Use ();
-            if (onDrag == null) {
-                return;
-            }
-            onDrag (e.position);
+        void IDragHandler.OnDrag(PointerEventData e)
+        {
+            e.Use();
+            onDrag?.Invoke(e.position);
         }
     }
 }
