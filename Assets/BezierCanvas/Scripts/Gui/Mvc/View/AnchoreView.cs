@@ -8,7 +8,7 @@ namespace BezierCanvas
     [RequireComponent(typeof(RectTransform))]
     public class AnchoreView : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
-        [SerializeField] Image image;
+        [SerializeField] Image image = default;
 
         RectTransform rectTransform;
         Action<Vector2> onDrag;

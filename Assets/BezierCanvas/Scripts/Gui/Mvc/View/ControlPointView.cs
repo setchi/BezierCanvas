@@ -6,9 +6,9 @@ namespace BezierCanvas
     [RequireComponent(typeof(LineRenderer))]
     public class ControlPointView : MonoBehaviour
     {
-        [SerializeField] HandleView handle1;
-        [SerializeField] HandleView handle2;
-        [SerializeField] AnchoreView anchore;
+        [SerializeField] HandleView handle1 = default;
+        [SerializeField] HandleView handle2 = default;
+        [SerializeField] AnchoreView anchore = default;
 
         [HideInInspector] public Guid Id;
 

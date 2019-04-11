@@ -6,11 +6,11 @@ namespace BezierCanvas
 {
     public class CanvasController : MonoBehaviour
     {
-        [SerializeField] RectTransform curveContainer;
-        [SerializeField] CanvasView canvasView;
-        [SerializeField] ControlPointView controlPointView;
-        [SerializeField] PathView pathView;
-        [SerializeField] PathModel model;
+        [SerializeField] RectTransform curveContainer = default;
+        [SerializeField] CanvasView canvasView = default;
+        [SerializeField] ControlPointView controlPointView = default;
+        [SerializeField] PathView pathView = default;
+        [SerializeField] PathModel model = default;
 
         ControlPointView currentEditingControlPoint;
 
@@ -112,7 +112,7 @@ namespace BezierCanvas
         {
             if (controlPointViews.ContainsKey(id))
             {
-                DestroyObject(controlPointViews[id].gameObject);
+                Destroy(controlPointViews[id].gameObject);
                 controlPointViews.Remove(id);
             }
 

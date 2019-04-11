@@ -9,10 +9,10 @@ namespace BezierCanvas
     [RequireComponent(typeof(RectTransform))]
     public class CanvasView : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
     {
-        [SerializeField] Button buttonCorner;
-        [SerializeField] Button buttonSmooth;
-        [SerializeField] Button buttonDelete;
-        [SerializeField] Button buttonClear;
+        [SerializeField] Button buttonCorner = default;
+        [SerializeField] Button buttonSmooth = default;
+        [SerializeField] Button buttonDelete = default;
+        [SerializeField] Button buttonClear = default;
 
         Action<Vector2> onPointerDown;
         Action<Vector2> onDrag;
